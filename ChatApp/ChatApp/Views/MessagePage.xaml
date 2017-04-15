@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:local="clr-namespace:ChatApp.Models;assembly=ChatApp"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ChatApp.Views.MessagePage"
+             Title="Messages">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:DatetimeToStringConverter x:Key="DatetimeToStringConverter"></local:DatetimeToStringConverter>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+  <ContentPage.Content>
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+      <StackLayout Padding="0,20,0,0">
+        <ListView ItemsSource="{Binding Messages}"  ItemTapped="OnItemTapped" HasUnevenRows="True">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <StackLayout Margin="20,0,0,0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                  <Frame OutlineColor="Silver" HasShadow="True">
+                    <StackLayout Orientation="Vertical">
+                      <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding UserName, StringFormat='{0}: '}"></Label>
+                        <Label Text="{Binding Date, StringFormat='{0}: '}, Converter={StaticResource DatetimeToStringConverter}"></Label>
+                      </StackLayout>
+                      <Label Text="{Binding Text}"></Label>
+                    </StackLayout>
+                  </Frame>
+                </StackLayout>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+    </StackLayout>
+  </ContentPage.Content>
+  
+</ContentPage>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="ChatApp.Views.MDFrame">
+    <MasterDetailPage.Master>
+        <!-- Hamburger Menu Secret Sauce... Add an Icon!!!! Make sure it's in your resources for your Platform Project -->
+        <NavigationPage Title="Required Foo" Icon="hamburger.png">
+            <x:Arguments>
+                <ContentPage Title="Menu">
+                    <StackLayout Padding="40">
+                        <Button Text="Conversations" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage/MainPage" />
+                        <Button Text="Messages" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage/MessagePage" />
+                        <Button Text="Friends" Command="{Binding NavigateCommand}" CommandParameter="Navigation/FriendPage" />
+                    </StackLayout>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ChatApp.Views.MainPage"
+             Title="Conversations">
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="+" Clicked="OnAddItemClicked">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" Android="add.png" />
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+  
+  <ContentPage.Content>
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+      <StackLayout Padding="0,20,0,0">
+        <ListView x:Name="listView" ItemsSource="{Binding Conversations}"  ItemTapped="OnItemTapped">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="{Binding UserName}" />
+                  <Label Grid.Column="1" Text="{Binding LastMessage}" />
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+    </StackLayout>
+  </ContentPage.Content>
+  
+
+</ContentPage>
