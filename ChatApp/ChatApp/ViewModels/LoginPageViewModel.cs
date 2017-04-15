@@ -42,7 +42,7 @@ namespace ChatApp.ViewModels
             {
                 this._settings.User = await this._webservice.Login(Username, Password);
                 this._settings.Save();
-                //absolute destination removes this page from teh nav stack
+                //absolute destination removes this page from the nav stack
                 await _navigationService.NavigateAsync(Constants.MDFramePage);
             }
             finally
